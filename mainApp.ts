@@ -14,17 +14,17 @@ export const mainApp = (app : Application)=>{
             }
         ))
 
-        .use("", (req : Request, res : Response)=>{
-            try {
-                return res.status(HTTP.OK).json({
-                    message : "Good to GO!"
-                })
-            } catch (error) {
-                return res.status(HTTP.BAD).json({
-                    message : "Error"
-                })
-            }
-        })
+        // .use("", (req : Request, res : Response)=>{
+        //     try {
+        //         return res.status(HTTP.OK).json({
+        //             message : "Good to GO!"
+        //         })
+        //     } catch (error) {
+        //         return res.status(HTTP.BAD).json({
+        //             message : "Error"
+        //         })
+        //     }
+        // })
 
         app.use("/api/v1", auth)
         app.use("/api/v1", todo)

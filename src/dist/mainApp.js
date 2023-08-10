@@ -15,19 +15,18 @@ const mainApp = (app) => {
         .use((0, cors_1.default)({
         origin: " http://127.0.0.1:5173",
         methods: ["GET", "POST", "PATCH", "DELETE"]
-    }))
-        .use("", (req, res) => {
-        try {
-            return res.status(mainError_1.HTTP.OK).json({
-                message: "Good to GO!"
-            });
-        }
-        catch (error) {
-            return res.status(mainError_1.HTTP.BAD).json({
-                message: "Error"
-            });
-        }
-    });
+    }));
+    // .use("", (req : Request, res : Response)=>{
+    //     try {
+    //         return res.status(HTTP.OK).json({
+    //             message : "Good to GO!"
+    //         })
+    //     } catch (error) {
+    //         return res.status(HTTP.BAD).json({
+    //             message : "Error"
+    //         })
+    //     }
+    // })
     app.use("/api/v1", authRouter_1.default);
     app.use("/api/v1", todoRouter_1.default);
     app.all("*", (req, res, next) => {
