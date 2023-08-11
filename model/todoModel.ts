@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 interface iTodo {
     task? : string,
-    userID : string;
+    userID? : string
 }
 
 interface iTodoData extends iTodo, mongoose.Document {}

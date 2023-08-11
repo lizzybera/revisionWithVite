@@ -34,7 +34,8 @@ const createTodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.createTodo = createTodo;
 const viewtodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const todo = yield todoModel_1.default.find();
+        const todo = todoModel_1.default.find();
+        // console.log("this is ", todo);
         res.status(mainError_1.HTTP.OK).json({
             message: "found",
             data: todo

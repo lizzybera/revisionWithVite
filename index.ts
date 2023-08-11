@@ -14,7 +14,6 @@ const url  : string = process.env.DB!
 const server = app.listen(process.env.PORT || port, ()=>{
     mongoose.connect(url).then(()=>{
         console.log("connected");
-        
     })
 })
 

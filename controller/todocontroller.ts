@@ -21,7 +21,9 @@ export const createTodo = async (req : Request, res : Response) =>{
 
 export const viewtodo = async (req : Request, res : Response) =>{
     try {
-        const todo = await todoModel.find()
+        const todo = todoModel.find()
+        // console.log("this is ", todo);
+        
         res.status(HTTP.OK).json({
             message : "found",
             data : todo
