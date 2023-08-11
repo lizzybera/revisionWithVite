@@ -12,70 +12,57 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deletetodo = exports.getOnetodo = exports.viewtodo = exports.createTodo = void 0;
+exports.deletetodo = exports.viewtodo = exports.createTodo = void 0;
 const mainError_1 = require("../error/mainError");
 const todoModel_1 = __importDefault(require("../model/todoModel"));
 const createTodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { userID } = req.params;
         const { task } = req.body;
-        const todo = yield todoModel_1.default.create({ task, userID });
-        res.status(mainError_1.HTTP.CREATE).json({
+        const auth = yield todoModel_1.default.create({
+            task,
+            userID,
+        });
+        console.log(auth);
+        res.status(mainError_1.HTTP.OK).json({
             message: "created",
-            data: todo
+            data: auth,
         });
     }
     catch (error) {
         res.status(mainError_1.HTTP.BAD).json({
-            message: "Error"
+            message: "Error",
         });
     }
 });
 exports.createTodo = createTodo;
 const viewtodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const todo = todoModel_1.default.find();
-        // console.log("this is ", todo);
+        const auth = yield todoModel_1.default.find();
         res.status(mainError_1.HTTP.OK).json({
             message: "found",
-            data: todo
+            data: auth,
         });
     }
     catch (error) {
         res.status(mainError_1.HTTP.BAD).json({
-            message: "Error"
+            message: "Error",
         });
     }
 });
 exports.viewtodo = viewtodo;
-const getOnetodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { todoID } = req.params;
-        const todo = yield todoModel_1.default.findById(todoID);
-        res.status(mainError_1.HTTP.OK).json({
-            message: "found",
-            data: todo
-        });
-    }
-    catch (error) {
-        res.status(mainError_1.HTTP.BAD).json({
-            message: "Error"
-        });
-    }
-});
-exports.getOnetodo = getOnetodo;
 const deletetodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { todoID } = req.params;
-        const todo = yield todoModel_1.default.findByIdAndDelete(todoID);
+        const auth = yield todoModel_1.default.findByIdAndDelete(todoID);
         res.status(mainError_1.HTTP.OK).json({
-            message: "deleted",
-            data: todo
+            message: "delete one",
+            data: auth,
         });
     }
     catch (error) {
         res.status(mainError_1.HTTP.BAD).json({
-            message: "Error"
+            message: "Error",
         });
     }
 });
