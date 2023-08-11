@@ -13,7 +13,7 @@ const todoRouter_1 = __importDefault(require("./router/todoRouter"));
 const mainApp = (app) => {
     app.use(express_1.default.json())
         .use((0, cors_1.default)({
-        origin: [" http://127.0.0.1:5173", " https://todo-revision-vite.vercel.app"],
+        origin: " https://todo-revision-vite.vercel.app",
         methods: ["GET", "POST", "PATCH", "DELETE"]
     }));
     // .use("", (req : Request, res : Response)=>{

@@ -9,7 +9,7 @@ export const mainApp = (app : Application)=>{
     app.use(express.json())
         .use(cors(
             {
-                origin : [" http://127.0.0.1:5173"," https://todo-revision-vite.vercel.app"],
+                origin : " https://todo-revision-vite.vercel.app",
                 methods: ["GET", "POST", "PATCH", "DELETE"]
             }
         ))
